@@ -1,0 +1,25 @@
+name: main
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                rust-version: [stable, beta, nightly]
+            fail-fast: false
+
+        continue-on-error: ${{ matrix.rust-version == 'nightly' }}
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - run: cargo fmt -- --check
+              if: matrix.rust-version == 'stable'
+            - run: cargo clippy
