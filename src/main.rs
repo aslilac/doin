@@ -21,10 +21,7 @@ fn main() -> ExitCode {
         .args(args)
         .status()
         .expect("Failed to execute the command!");
+    let code = status.code().expect("Process terminated by signal!");
 
-    match status.code() {
-        Some(0) => ExitCode::SUCCESS,
-        Some(code) => ExitCode::from(code as u8),
-        None => ExitCode::FAILURE,
-    }
+    ExitCode::from(code as u8)
 }
