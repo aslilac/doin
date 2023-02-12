@@ -1,6 +1,6 @@
 [package]
 name = "doin"
-version = "1.0.2"
+version = "1.0.3"
 authors = ["McKayla Washburn <mckayla@hey.com>"]
 description = "Run commands in another directory"
 keywords = ["cd", "directory", "change", "chdir", "chdir"]
